@@ -1,248 +1,234 @@
 <html>
 
-<head>
-	<title>menu</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="../../layui/css/layui.css" />
-	<link rel="stylesheet" href="./style.css">
-	<script src="../../jquery-1.7.2.js"></script>
-</head>
+	<head>
+		<title>menu</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="./style.css">
+		<script src="../../jquery-1.7.2.js"></script>
+	</head>
 
-<body style="position: relative;overflow: hidden;">
-	<div class="smoke"></div>
-	<div id="main" style="overflow: auto;">
-		<div id="title">
-			<div id="maintitle">苍耳作品精选，可放心食用</div>
-			<div id="subtitle">Cang Er's works selected, can be assured of practical</div>
-		</div>
-		<div id="menu" class="layui-row">
-			<div id="left" class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg5">
-				<div id=block1 class="block">
-					<div class="item">
-						<div class="item_title">开场白</div>
-						<div class="item_content">
-							<div class="item_desc">
-								<div>关于我</div>
-								<div>About me</div>
-							</div>
-							<div class="box">
-								<span>2001</span>
-								<input type="checkbox" onclick="goPage(0)">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id=block3 class="block">
-					<div class="item">
-						<div class="item_title">个人项目</div>
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>我第一诗书</div>
-									<div>My first collection of poems</div>
+	<body style="position: relative;overflow: hidden;">
+		<div id="main" style="overflow: auto;">
+			<div id="title">
+				<div id="maintitle">苍耳作品精选，可放心食用</div>
+				<div id="subtitle">Cang Er's works selected, can be assured of practical</div>
+			</div>
+			<div id="menu" class="layui-row">
+				<div id="left" class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg5">
+					<div id=block1 class="block">
+						<div class="item">
+							<div class="item_title">开场白</div>
+							<div class="item_content">
+								<div class="item_desc">
+									<div>关于我</div>
+									<div>About me</div>
 								</div>
-								<div class="min_size">出版物</br>Publication</div>
-							</div>
-							<div class="box">
-								<span>2023</span>
-								<input type="checkbox" onclick="goPage(3)">
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>数字漫游</div>
-									<div>Digtital Wandering</div>
+								<div class="box">
+									<span>2001</span>
+									<input type="checkbox" onclick="goPage(0)">
 								</div>
-								<div class="min_size">视觉设计、网站设计</br>website design</div>
-							</div>
-							<div class="box">
-								<span>2022</span>
-								<input type="checkbox" onclick="goPage(4)">
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>或许，我能阻断光吗？</div>
+					<div id=block3 class="block">
+						<div class="item">
+							<div class="item_title">个人项目</div>
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>我第一诗书</div>
+										<div>My first collection of poems</div>
+									</div>
+									<div class="min_size">出版物</br>Publication</div>
+								</div>
+								<div class="box">
+									<span>2023</span>
+									<input type="checkbox" onclick="goPage(3)">
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>数字漫游</div>
+										<div>Digtital Wandering</div>
+									</div>
+									<div class="min_size">视觉设计、网站设计</br>website design</div>
+								</div>
+								<div class="box">
+									<span>2022</span>
+									<input type="checkbox" onclick="goPage(4)">
+								</div> 
+							</div>
+						</div>
+						<div class="item">
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>或许，我能阻断光吗？</div>
 
-									<div>Perhaps,can I block the light?</div>
+										<div>Perhaps,can I block the light?</div>
+									</div>
+									<div class="min_size">视频</br>Video</div>
 								</div>
-								<div class="min_size">视频</br>Video</div>
-							</div>
-							<div class="box">
-								<span>2021</span>
-								<input type="checkbox" onclick="goPage(5)">
+								<div class="box">
+									<span>2021</span>
+									<input type="checkbox" onclick="goPage(5)">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>张学良系列</div>
-									<div>Zhang Xueliang series</div>
+						<div class="item">
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>张学良系列</div>
+										<div>Zhang Xueliang series</div>
+									</div>
+									<div class="min_size">海报设计、视觉设计</br>Poster design, visual design</div>
 								</div>
-								<div class="min_size">海报设计、视觉设计</br>Poster design, visual design</div>
-							</div>
-							<div class="box">
-								<span>2021</span>
-								<input type="checkbox" onclick="goPage(6)">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="right" class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg5">
-				<div id=block2 class="block">
-					<div class="item">
-						<div class="item_title">商业项目</div>
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>苍耳历险记</div>
-									<div>Adventures of Cang Er</div>
+								<div class="box">
+									<span>2021</span>
+									<input type="checkbox" onclick="goPage(6)">
 								</div>
-								<div class="min_size">品牌设计、插画</br>Brand design,illustration</div>
-							</div>
-							<div class="box">
-								<span>2021</span>
-								<input type="checkbox" onclick="goPage(1)">
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>No tag on me</div>
-								</div>
-								<div class="min_size">平面图形动画</br>Motion Graphic Animated</div>
-							</div>
-							<div class="box">
-								<span>2022</span>
-								<input type="checkbox" onclick="goPage(2)">
 							</div>
 						</div>
 					</div>
 				</div>
-				<div id=block5 class="block">
-					<div class="item">
-						<div class="item_title">团队项目</div>
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>无刺电音节</div>
-									<div>No thorn electric music festival</div>
+				<div id="right" class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg5">
+					<div id=block2 class="block">
+						<div class="item">
+							<div class="item_title">商业项目</div>
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>苍耳历险记</div>
+										<div>Adventures of Cang Er</div>
+									</div>
+									<div class="min_size">品牌设计、插画</br>Brand design,illustration</div>
 								</div>
-								<div class="min_size">品牌设计</br>Brand design</div>
+								<div class="box">
+									<span>2021</span>
+									<input type="checkbox" onclick="goPage(1)">
+								</div>
 							</div>
-							<div class="box">
-								<span>2021</span>
-								<input type="checkbox" onclick="goPage(7)">
+						</div>
+						<div class="item">
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>No tag on me</div>
+									</div>
+									<div class="min_size">平面图形动画</br>Motion Graphic Animated</div>
+								</div>
+								<div class="box">
+									<span>2022</span>
+									<input type="checkbox" onclick="goPage(2)">
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="item_content">
-							<div class="item_desc">
-								<div class="min_size2">
-									<div>火花老年友好型在线社交平台</div>
-									<div>Spark online dating app for seniors</div>
+					<div id=block5 class="block">
+						<div class="item">
+							<div class="item_title">团队项目</div>
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>无刺电音节</div>
+										<div>No thorn electric music festival</div>
+									</div>
+									<div class="min_size">品牌设计</br>Brand design</div>
 								</div>
-								<div class="min_size">交互设计、品牌设计</br>Interaction design, brand design</div>
+								<div class="box">
+									<span>2021</span>
+									<input type="checkbox" onclick="goPage(7)">
+								</div>
 							</div>
-							<div class="box">
-								<span>2022</span>
-								<input type="checkbox" onclick="goPage(8)">
+						</div>
+						<div class="item">
+							<div class="item_content">
+								<div class="item_desc">
+									<div class="min_size2">
+										<div>火花老年友好型在线社交平台</div>
+										<div>Spark online dating app for seniors</div>
+									</div>
+									<div class="min_size">交互设计、品牌设计</br>Interaction design, brand design</div>
+								</div>
+								<div class="box">
+									<span>2022</span>
+									<input type="checkbox" onclick="goPage(8)">
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
-		</div>
-	</div>
-	<div id="posi">
-		<div id="overBg" style="position: absolute;top: 17px;">
-			<div>
-				<img style="width: 300px;" src="../assets/img/icon/盘子.png" />
-			</div>
-			<div id="info">
-				<div id="email">联系方式：purun_design@163.com</div>
-				<div id="address">上海市松江区文汇路 1000弄</div>
+				</div>
 			</div>
 		</div>
-	</div>
+		<div id="posi">
+			<div id="overBg" style="position: absolute;top: 17px;">
+				<div>
+					<img style="width: 300px;" src="../assets/img/icon/盘子.png" />
+				</div>
+				<div id="info">
+					<div id="email">联系方式：purun_design@163.com</div>
+					<div id="address">上海市松江区文汇路 1000弄</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function goPage(param) {
+				localStorage.setItem('param', param)
+				window.location.href = "../details/details.html?param=" + param;
+			}
+		</script>
+	</body>
 	<script>
-		document.addEventListener('mousemove', function (event) {
-			var smoke = document.querySelector('.smoke');
-			smoke.style.left = (event.pageX - 50 - 20) + 'px';
-			smoke.style.top = (event.pageY - 50 - 20) + 'px';
-			smoke.style.opacity = 1;
-			smoke.style.transform = 'translate(-50%, -50%) rotate(90deg) scaleY(1)';
+		$(function() {
+			$("#main").height($(window).height());
+		})
+		let time = null; //time用来控制事件的触发
 
-			setTimeout(function () {
-				smoke.style.opacity = 0;
-				smoke.style.transform = 'translate(-50%, -50%) rotate(90deg) scaleY(0)';
-			}, 3000);
+		$("body").click(function() {
+			out("#overBg");
+		})
+		//阻止当前元素的任何事件
+		$("#overBg").on("click", function(event) {
+			if (time !== null) {
+				clearTimeout(time);
+			}
+			var top = "-23px";
+			time = setTimeout(() => {
+				$(this).animate({
+					top: top,
+				}, 700, "linear");
+				clearTimeout(time);
+			}, 200)
+
+			//兼容任何浏览器
+			var e = arguments.callee.caller.arguments[0] || event;
+			if (e && e.stopPropagation) {
+				// 兼容 Mozilla and Opera 浏览器
+				e.stopPropagation();
+			} else if (window.event) {
+				// 兼容IE浏览器
+				window.event.cancelBubble = true;
+			}
 		});
-		function goPage(param) {
-			localStorage.setItem('param', param)
-			window.location.href = "../details/details.html?param=" + param;
+
+
+		function out(that) {
+			if (time !== null) {
+				clearTimeout(time);
+			}
+			time = setTimeout(() => {
+				$(that).animate({
+					top: "17px",
+				}, 700, "linear");
+				clearTimeout(time);
+			}, 200)
 		}
 	</script>
-</body>
-<script>
-	$(function () {
-		$("#main").height($(window).height());
-	})
-	let time = null; //time用来控制事件的触发
-
-	$("body").click(function () {
-		out("#overBg");
-	})
-	//阻止当前元素的任何事件
-	$("#overBg").on("click", function (event) {
-		if (time !== null) {
-			clearTimeout(time);
-		}
-		var top = "-23px";
-		time = setTimeout(() => {
-			$(this).animate({
-				top: top,
-			}, 700, "linear");
-			clearTimeout(time);
-		}, 200)
-
-		//兼容任何浏览器
-		var e = arguments.callee.caller.arguments[0] || event;
-		if (e && e.stopPropagation) {
-			// 兼容 Mozilla and Opera 浏览器
-			e.stopPropagation();
-		} else if (window.event) {
-			// 兼容IE浏览器
-			window.event.cancelBubble = true;
-		}
-	});
-
-
-	function out(that) {
-		if (time !== null) {
-			clearTimeout(time);
-		}
-		time = setTimeout(() => {
-			$(that).animate({
-				top: "17px",
-			}, 700, "linear");
-			clearTimeout(time);
-		}, 200)
-	}
-</script>
-
 </html>
