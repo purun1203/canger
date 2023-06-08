@@ -1,178 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./style.css">
-		<title>details</title>
-	</head>
-	<body>
-		<div id="main">
-			<div id="head">
-				<div class="option left top" onclick="backPage()">
-					<div>返回点单 /</div>
-					<div style="margin-top: -5px;">Return to order form</div>
-				</div>
-				<div class="option right top" onclick="goPage()">
-					<div>下一道 /</div>
-					<div style="margin-top: -5px;">Next course</div>
-				</div>
-			</div>
-			
-			<div id="body">
-				<div id="chart">
-					<div class="slideshow-container" id="lun">
-						<!-- 改成动态加载 -->
-						<!-- <img class="mySlides" src="../assets/img/2/1.JPG" alt="Image 1">
-                    <img class="mySlides" src="../assets/img/2/2.JPG" alt="Image 2">
-                    <img class="mySlides" src="../assets/img/2/3.JPG" alt="Image 3"> -->
 
-						<!-- <img class="prev" onclick="changeSlide(-1)" src="../assets/img/icon/茶壶.png" alt=""></a>
-                    <img class="next" onclick="changeSlide(1)" src="../assets/img/icon/茶壶.png" alt=""></a>
-                    <div id="no"></div> -->
-					</div>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>details</title>
+</head>
 
-				</div>
+<body>
+	<div class="smoke"></div>
+	<div id="main">
+		<div id="head">
+			<div class="option left top" onclick="backPage()">
+				<div>返回点单 /</div>
+				<div style="margin-top: -5px;">Return to order form</div>
 			</div>
-			<div id="detail"></div>
-			<div id="MeDetail" style="none">
-				<img src="../assets/img/icon/盘子.png" />
-				<img src="../assets/img/关于我/关于我.jpeg" style="position: absolute;right: 578px;width: 300px;height: 300px;top: 518px;" />
-			</div>
-			<div id="tail">
-				<div class="option right bottom" id="show" onclick="goDesc()">
-					<div>菜品介绍 /</div>
-					<div style="margin-top: -5px;">Introdution to dishes</div>
-				</div>
+			<div class="option right top" onclick="goPage()">
+				<div>下一道 /</div>
+				<div style="margin-top: -5px;">Next course</div>
 			</div>
 		</div>
-		<script src="../../jquery-1.7.2.js"></script>
-		<script>
-			$(function() {
+
+		<div id="body">
+			<div id="chart">
+				<div class="slideshow-container" id="lun">
+					<!-- 改成动态加载 -->
+					<!-- <img class="mySlides" src="../assets/img/2/1.jpg" alt="Image 1">
+                    <img class="mySlides" src="../assets/img/2/2.jpg" alt="Image 2">
+                    <img class="mySlides" src="../assets/img/2/3.jpg" alt="Image 3"> -->
+
+					<!-- <img class="prev" onclick="changeSlide(-1)" src="../assets/img/icon/茶壶.png" alt=""></a>
+                    <img class="next" onclick="changeSlide(1)" src="../assets/img/icon/茶壶.png" alt=""></a>
+                    <div id="no"></div> -->
+				</div>
+
+			</div>
+		</div>
+		<div id="detail"></div>
+		<div id="MeDetail" style="none">
+			<img src="../assets/img/icon/盘子.png" />
+			<img src="../assets/img/关于我/关于我.jpeg"
+				style="position: absolute;right: 578px;width: 300px;height: 300px;top: 518px;" />
+		</div>
+		<div id="tail">
+			<div class="option right bottom" id="show" onclick="goDesc()">
+				<div>菜品介绍 /</div>
+				<div style="margin-top: -5px;">Introdution to dishes</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../jquery-1.7.2.js"></script>
+	<script>
+		document.addEventListener('mousemove', function (event) {
+			var smoke = document.querySelector('.smoke');
+			smoke.style.left = (event.pageX - 50 - 20) + 'px';
+			smoke.style.top = (event.pageY - 50 - 20) + 'px';
+			smoke.style.opacity = 1;
+			smoke.style.transform = 'translate(-50%, -50%) rotate(90deg) scaleY(1)';
+
+			setTimeout(function () {
+				smoke.style.opacity = 0;
+				smoke.style.transform = 'translate(-50%, -50%) rotate(90deg) scaleY(0)';
+			}, 3000);
+		});
+		$(function () {
+			$("#main").height($(window).height());
+			$(window).resize(function () {
 				$("#main").height($(window).height());
-				$(window).resize(function() {
-					$("#main").height($(window).height());
-					$("iframe.mySlides").height($("iframe.mySlides").width()*403/715);
-				})
+				$("iframe.mySlides").height($("iframe.mySlides").width() * 403 / 715);
 			})
-		</script>
-		<script>
-			var slideIndex = 1;
-			var type = 0; // 
+		})
+	</script>
+	<script>
+		var slideIndex = 1;
+		var type = 0; // 
 
-			var url = new URL(window.location.href);
-			var params = new URLSearchParams(url.search);
-			var param = localStorage.getItem('param');
-			switchImg(param)
+		var url = new URL(window.location.href);
+		var params = new URLSearchParams(url.search);
+		var param = localStorage.getItem('param');
+		switchImg(param)
 
 
-			/**
-			 * 1 苍耳历险
-			 * 2 No tag
-			 * 3 我的第一
-			 * 4 数字漫游
-			 * 5 或许
-			 * 6 张学良
-			 * 7 无刺电音
-			 * 8 火花老年
-			 */
-			function switchImg(param) {
-				if (param == 0) {
-					addAboutMe()
-				} else if (param == 1) {
-					let path = '../assets/img/苍耳历险记'
-					addImage('../assets/img/苍耳历险记/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImage(path + '/7.JPG')
-					addImage(path + '/8.JPG')
-					addImageButton()
-				} else if (param == 2) {
-					let path = '../assets/img/No tag on me'
-					addDVD("https://www.douyin.com/aweme/v1/play/?video_id=v0d00fg10000ci0q1m3c77uculg77k2g&line=0&file_id=d650f858c270482ea0f27ae76ad8921e&sign=934d6d63cbad1eb4c3b398304dec298d&is_play_url=1&source=PackSourceEnum_AWEME_DETAIL&aid=6383")
-					addImage('../assets/img/No tag on me/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImageButton()
-				} else if (param == 3) {
-					let path = '../assets/img/我第一诗书'
-					addImage('../assets/img/我第一诗书/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImage(path + '/7.JPG')
-					addImage(path + '/8.JPG')
-					addImage(path + '/33.JPG')
-					addImageButton()
-				} else if (param == 4) {
-					let path = '../assets/img/数字漫游'
-					addImage('../assets/img/数字漫游/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.png')
-					addImage(path + '/6.png')
-					addImage(path + '/7.png')
-					addImageButton()
-				} else if (param == 5) {
-					let path = '../assets/img/或许，我能阻断光吗？'
-					addDVD("https://v3-web.douyinvod.com/2055d4df53cffa6f4f1687f6d72318cc/6481b4c7/video/tos/cn/tos-cn-ve-15c001-alinc2/oganIGfVI9CVvbXBAQzAECQEeRygoBCAONhFtH/?a=6383&ch=0&cr=0&dr=0&er=0&cd=0%7C0%7C0%7C0&cv=1&br=874&bt=874&cs=0&ds=3&ft=bvTKJbQQqUumf7oZPo0OW_EklpPiX8KByMVJEj53wZ0PD-I&mime_type=video_mp4&qs=0&rc=ZDs2Ojo3aDU6NzM7MzszZ0BpM3VweTc6ZmR0bDMzNGkzM0BeMi5eNDEwNTQxLjZjYzBfYSMwYjU1cjRvLy1gLS1kLS9zcw%3D%3D&l=20230608175811C8E3FD8F442AB50C5088&btag=e00028000")
-					addImage('../assets/img/或许，我能阻断光吗？/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImageButton()
-				} else if (param == 6) {
-					let path = '../assets/img/张学良系列'
-					addImage('../assets/img/张学良系列/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImage(path + '/7.JPG')
-					addImageButton()
-				} else if (param == 7) {
-					let path = '../assets/img/无刺电音节'
-					addImage('../assets/img/无刺电音节/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImage(path + '/7.JPG')
-					addImage(path + '/8.JPG')
-					addImageButton()
-				} else if (param == 8) {
-					let path = '../assets/img/火花老年友好型在线社交平台'
-					addImage('../assets/img/火花老年友好型在线社交平台/1.JPG')
-					addImage(path + '/2.JPG')
-					addImage(path + '/3.JPG')
-					addImage(path + '/4.JPG')
-					addImage(path + '/5.JPG')
-					addImage(path + '/6.JPG')
-					addImageButton()
-				}
-
+		/**
+		 * 1 苍耳历险
+		 * 2 No tag
+		 * 3 我的第一
+		 * 4 数字漫游
+		 * 5 或许
+		 * 6 张学良
+		 * 7 无刺电音
+		 * 8 火花老年
+		 */
+		function switchImg(param) {
+			if (param == 0) {
+				addAboutMe()
+			} else if (param == 1) {
+				let path = '../assets/img/苍耳历险记'
+				addImage('../assets/img/苍耳历险记/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImage(path + '/7.jpg')
+				addImage(path + '/8.jpg')
+				addImageButton()
+			} else if (param == 2) {
+				let path = '../assets/img/No tag on me'
+				addDVD("https://www.douyin.com/aweme/v1/play/?video_id=v0d00fg10000ci0q1m3c77uculg77k2g&line=0&file_id=d650f858c270482ea0f27ae76ad8921e&sign=934d6d63cbad1eb4c3b398304dec298d&is_play_url=1&source=PackSourceEnum_AWEME_DETAIL&aid=6383")
+				addImage('../assets/img/No tag on me/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImageButton()
+			} else if (param == 3) {
+				let path = '../assets/img/我第一诗书'
+				addImage('../assets/img/我第一诗书/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImage(path + '/7.jpg')
+				addImage(path + '/8.jpg')
+				addImage(path + '/33.jpg')
+				addImageButton()
+			} else if (param == 4) {
+				let path = '../assets/img/数字漫游'
+				addImage('../assets/img/数字漫游/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.png')
+				addImage(path + '/6.png')
+				addImage(path + '/7.png')
+				addImageButton()
+			} else if (param == 5) {
+				let path = '../assets/img/或许，我能阻断光吗？'
+				addDVD("https://v3-web.douyinvod.com/2055d4df53cffa6f4f1687f6d72318cc/6481b4c7/video/tos/cn/tos-cn-ve-15c001-alinc2/oganIGfVI9CVvbXBAQzAECQEeRygoBCAONhFtH/?a=6383&ch=0&cr=0&dr=0&er=0&cd=0%7C0%7C0%7C0&cv=1&br=874&bt=874&cs=0&ds=3&ft=bvTKJbQQqUumf7oZPo0OW_EklpPiX8KByMVJEj53wZ0PD-I&mime_type=video_mp4&qs=0&rc=ZDs2Ojo3aDU6NzM7MzszZ0BpM3VweTc6ZmR0bDMzNGkzM0BeMi5eNDEwNTQxLjZjYzBfYSMwYjU1cjRvLy1gLS1kLS9zcw%3D%3D&l=20230608175811C8E3FD8F442AB50C5088&btag=e00028000")
+				addImage('../assets/img/或许，我能阻断光吗？/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImageButton()
+			} else if (param == 6) {
+				let path = '../assets/img/张学良系列'
+				addImage('../assets/img/张学良系列/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImage(path + '/7.jpg')
+				addImageButton()
+			} else if (param == 7) {
+				let path = '../assets/img/无刺电音节'
+				addImage('../assets/img/无刺电音节/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImage(path + '/7.jpg')
+				addImage(path + '/8.jpg')
+				addImageButton()
+			} else if (param == 8) {
+				let path = '../assets/img/火花老年友好型在线社交平台'
+				addImage('../assets/img/火花老年友好型在线社交平台/1.jpg')
+				addImage(path + '/2.jpg')
+				addImage(path + '/3.jpg')
+				addImage(path + '/4.jpg')
+				addImage(path + '/5.jpg')
+				addImage(path + '/6.jpg')
+				addImageButton()
 			}
 
-			function addAboutMe() {
-				var element = document.getElementById("show");
-				element.style.visibility = "hidden";
-				// var style = document.createElement('style');
-				// style.innerHTML =
-				// 	"#main {background:url(../assets/img/icon/盘子.png) no-repeat calc(200%) calc(120%);background-size:1200px}";
-				// document.head.appendChild(style);
-				var container = document.getElementById('MeDetail');
-				container.style.display = "block";
-				let htmlStr = `
+		}
+
+		function addAboutMe() {
+			var element = document.getElementById("show");
+			element.style.visibility = "hidden";
+			// var style = document.createElement('style');
+			// style.innerHTML =
+			// 	"#main {background:url(../assets/img/icon/盘子.png) no-repeat calc(200%) calc(120%);background-size:1200px}";
+			// document.head.appendChild(style);
+			var container = document.getElementById('MeDetail');
+			container.style.display = "block";
+			let htmlStr = `
                 <div id="aboutme" style="display:flex;justify-content:space-between; width:100%;height:700px;padding: 23px;padding-left:40px;max-width: 800px;">
                     <div style="width:100%;font-size:23px;margin-top: 101px;"><span style="font-size:28px;"> 关于我</span><span style="font-size:28px;margin-top: -3px;display: block;">About me</span></br></br>
                          蒲润，又名苍耳。2001年出生于山东青岛。在校期间曾两次参与adidas Original品牌赋能计划。在设计创作中，她经常融合温暖细小的事物。喜欢相声和猫，听说人很逗。
@@ -181,182 +197,182 @@
                     
                 </div>
             `
-				var container = document.getElementById('lun');
-				container.innerHTML = htmlStr;
-				$("#lun").addClass("slideshow-container_me")
-				$("#MeDetail").animate({
-					right: "-448px",
-					top: "-223px"
-				}, 700, "linear");
+			var container = document.getElementById('lun');
+			container.innerHTML = htmlStr;
+			$("#lun").addClass("slideshow-container_me")
+			$("#MeDetail").animate({
+				right: "-448px",
+				top: "-223px"
+			}, 700, "linear");
+		}
+
+		function addImage(src) {
+			// 创建<img>元素
+			var imgElement = document.createElement('img');
+			// 设置<img>元素的属性
+			imgElement.src = src;
+			imgElement.alt = 'Image';
+			imgElement.className = 'mySlides';
+			// 将<img>元素添加到文档中的某个容器元素中
+			var container = document.getElementById('lun');
+			container.appendChild(imgElement);
+			showSlide(slideIndex)
+		}
+
+		function addDVD(src) {
+			// var str = `<video class="mySlides" controls muted preload="none">
+			//   <source src="${src}"  type="video/mp4">
+			//   <source src="${src}"  type="video/ogg">
+			//   您的浏览器不支持 HTML5 video 标签。
+			// </video>`;
+
+			var str = `<iframe  class="mySlides" style="width: 70%;height: 300px;" src="${src}"></iframe>`;
+			$("#lun").append(str);
+			$("iframe.mySlides").height($("iframe.mySlides").width() * 403 / 715);
+			showSlide(slideIndex)
+		}
+
+
+		function addImageButton() {
+			let htmlStr =
+				'<img class="prev" onclick="changeSlide(-1)" src="../assets/img/icon/茶壶左.png" alt=""></a><img class="next" onclick="changeSlide(1)" src="../assets/img/icon/茶壶.png" alt=""></a><div id="no"></div>'
+			var container = document.getElementById('lun');
+			container.innerHTML += htmlStr;
+
+		}
+
+		// 切换到上一张或下一张幻灯片
+		function changeSlide(n) {
+			slideIndex += n;
+			showSlide(slideIndex);
+		}
+
+		// 显示指定索引的幻灯片
+		function showSlide(n) {
+			var slides = document.getElementsByClassName("mySlides");
+
+			// 循环播放
+			if (n > slides.length) {
+				slideIndex = 1;
+			}
+			if (n < 1) {
+				slideIndex = slides.length;
 			}
 
-			function addImage(src) {
-				// 创建<img>元素
-				var imgElement = document.createElement('img');
-				// 设置<img>元素的属性
-				imgElement.src = src;
-				imgElement.alt = 'Image';
-				imgElement.className = 'mySlides';
-				// 将<img>元素添加到文档中的某个容器元素中
-				var container = document.getElementById('lun');
-				container.appendChild(imgElement);
-				showSlide(slideIndex)
+			// 隐藏所有幻灯片
+			for (var i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
 			}
 
-			function addDVD(src) {
-				// var str = `<video class="mySlides" controls muted preload="none">
-				//   <source src="${src}"  type="video/mp4">
-				//   <source src="${src}"  type="video/ogg">
-				//   您的浏览器不支持 HTML5 video 标签。
-				// </video>`;
-				
-				var str = `<iframe  class="mySlides" style="width: 70%;height: 300px;" src="${src}"></iframe>`;
-				$("#lun").append(str);
-				$("iframe.mySlides").height($("iframe.mySlides").width()*403/715);
-				showSlide(slideIndex)
-			}
+			// 显示当前幻灯片
+			console.log('取图片{}', slideIndex - 1)
+			slides[slideIndex - 1].style.display = "block";
+		}
 
+		function backPage() {
+			window.location.href = "../menu/menu.html";
+		}
 
-			function addImageButton() {
-				let htmlStr =
-					'<img class="prev" onclick="changeSlide(-1)" src="../assets/img/icon/茶壶左.png" alt=""></a><img class="next" onclick="changeSlide(1)" src="../assets/img/icon/茶壶.png" alt=""></a><div id="no"></div>'
-				var container = document.getElementById('lun');
-				container.innerHTML += htmlStr;
+		function goDesc() {
+			// window.location.href = "../desc/desc.html?param="+param;
+			type = type == 0 ? 1 : 0;
+			if (type == 1) {
+				document.getElementById("detail").style.display = "flex";
+				document.getElementById("body").style.display = "none";
+				var style = document.createElement('style');
+				// style.innerHTML = "#main {background:url(../assets/img/icon/盘子.png);background-position: -504px -356px; }";
 
-			}
-
-			// 切换到上一张或下一张幻灯片
-			function changeSlide(n) {
-				slideIndex += n;
-				showSlide(slideIndex);
-			}
-
-			// 显示指定索引的幻灯片
-			function showSlide(n) {
-				var slides = document.getElementsByClassName("mySlides");
-
-				// 循环播放
-				if (n > slides.length) {
-					slideIndex = 1;
+				// 将样式规则添加到文档头部
+				// let htmlStr = '<div id="title"><b></b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 随着时代的飞速发展，当前我国的老龄化比例越</div> <div id="desc_english"></div>'
+				document.head.appendChild(style);
+				if (param == 0) {
+					let htmlStr =
+						'<div id="title"><b>关于我</b></div><div id="desc"><b>About me</b></br> 蒲润，又名苍耳。2001年出生于山东青岛。在校期间曾两次参与adidas Original品牌赋能计划。在设计创作中，她经常融合温暖细小的事物。喜欢相声和猫，听说人很逗。</div> <div id="desc_english">Pu Run，also known as Canger. She was born in Qingdao, Shandong Province in 2001. During her school years, she participated in the adidas Original Brand Empowerment Program twice. In her design creation, she often blends warm and small things. She enjoys comedy and cats,and I heard that she is very funny.</div>'
+					addDesc(htmlStr)
+				} else if (param == 1) {
+					let htmlStr =
+						'<div id="title"><b>苍耳历险记Adventures of Cang Er</b></div> <div id="info"> <b>年份/YEAR:</b> 2021</br> <b>客户/CLIENT:</b> 阿迪达斯三叶草adidas Originals</br> <b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 作者将卡通形象与adidas.三叶草元素相结合，设计了一款多人线下桌游一一苍耳历险记。游戏 适合2一8人，含有多款人物形象供玩家选择。游戏中，玩家通过掷骰子来交朋友，游戏结束时 朋友最多者茯胜。每一次的投掷具有偶然性和不确定性，也带给玩家在游戏中不同的历险经历。</div> <div id="desc_english">The author combines cartoon images with adidas clover elements to design a multiplayer offline board game Cale Adventures.The game is suitable for 2-8 players and contains a variety of characters for players to choose from.In the game,players make friends by rolling the dice,and the one with the most friends at the end of the game wins.Each roll has chance and uncertainty,which also brings players a different adventure in the game.</div>'
+					addDesc(htmlStr)
+				} else if (param == 2) {
+					let htmlStr =
+						'<div id="title"><b>No tag on me</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br> <b>客户/CLIENT:</b> 阿迪达斯三叶草adidas Originals</br> <b>团队/TEAM:</b> 蒲润Pu Run、郑宥安 Youan Zheng、龙宇祺Yuqi Long、蒋世贞Shizhen Jiang</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 该项目于2022年由阿迪达斯三叶草发起，并同年在阿迪达斯官方公众号进行展示以及上海门店线下展览。 短片讲述了五个被条框和标签束缚的女孩，在一个永不设限的三叶草女孩自信力量的感染下，接受自身不完美、找回自我的故事。这是一部关于运动与美的动画，也是girl power与自信的体现。作为一个全女生的创作团队，我们想告诉每个女孩：我们都独一无二且美好，不完美和差异，才让我们成为真正的自己。</div> <div id="desc_english">The project was initiated by adidas Originals in 2022 and was showcased on the official adidas Originals public website and exhibited offline in Shanghai stores. The short film tells the story of five girls bound by rules and labels, infected by the confident power of a clover girl who never sets limits, accepting their own imperfections and finding themselves. It is an animation about movement and beauty, and the embodiment of girl power and self-confidence. As an all-girl creative team, we want to tell every girl that we are all unique and beautiful, and that imperfections and differences are what make us who we really are.</div>'
+					addDesc(htmlStr)
+				} else if (param == 3) {
+					let htmlStr =
+						'<div id="title"><b>我第一诗书My first collection of poems</b></div> <div id="info"> <b>年份/YEAR:</b> 2023</br> <b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目名称“我第一诗书”是由正常语序“我的第一本诗集”经过聋人语序思维过后修改后得到的。这本以聋人视角阅读的诗集打乱了非听障人士的阅读顺序，从聋人的语序思维出发，打碎固定的文本排列，将词语重新组合。左右对照式的排版让阅读者阅读时可进行更加直观的对比。项目旨在让非听障人士从正常语序下解放出来的同时，能了解更多聋人群体的语言表达逻辑与思维方式。</div> <div id="desc_english"> The title of the project, "Me First Poems Book", was created from the normal language order of "My first collection of poems" and modified by the deaf language order thinking. This book of poems read from the perspective of a deaf person disrupts the reading order of a non-hearing person by breaking up the fixed arrangement of the text and regrouping words from a deaf person\'s linguistic order. The layout is left-right contrasted so that non-hearing readers can cross-reference left and right as they read. The project aims to free non-hearing people from the stereotyped and pale phrases in the normal language order, and at the same time to learn more about the logic of language expression and the way of thinking of the deaf community. </div>'
+					addDesc(htmlStr)
+				} else if (param == 4) {
+					let htmlStr =
+						'<div id="title"><b>数字漫游 Digital Wandering</b></div> <div id="info"> <b>年份/YEAR:</b> 2023</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 人们面对每天源源不断的数字推送时，大脑偶尔会出现“死机”“卡顿”的状况。当大脑放空时，我们似乎在经历一场数字漫游。这场漫游不受地域、时间和身份的限制，通过互联网和数字媒体进行虚拟的旅行和探索，让人们在信息轰炸下的节奏中得到暂时的休憩。项目呈现了人们在浏览不同互联网数字讯息时所经历的心理和情感状态，以及对此现象的思考和探索。</div> <div id="desc_english">The author combines suitable for 2-8 players and contains a variety of characters for players to choose from.In the game,players make friends by rolling the dice,and the one with the most friends at the end of the game wins.Each roll has chance and uncertainty,which also brings players a different adventure in the game.</div>'
+					addDesc(htmlStr)
+				} else if (param == 5) {
+					let htmlStr =
+						'<div id="title"><b>我能阻断光吗？Perhaps,can I block the light?</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 在作品中，作者使用多种材料试图切断光的延续，但都无法彻底阻断。通过这种“无聊”的记叙方式来讨论当下人们面对的各种外界因素影响与正在做的事之间的关系，以及自我与外界因素之间的平衡的重新思考</div> <div id="desc_english">In the work, the author uses various materials to try to cut off the continuity of light, but none of them can be completely blocked. Through this "boring" narrative, the author discusses the relationship between the various external influences and what people are doing, and the rethinking of the balance between the self and the external factors.</div>'
+					addDesc(htmlStr)
+				} else if (param == 6) {
+					let htmlStr =
+						'<div id="title"><b>张学良系列 Zhang Xueliang Serie</b></div> <div id="info"> <b>年份/YEAR:</b> 2021</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目的灵感来源是单田芳先生关于张作霖和张学良生平的长篇单口相声，作者围绕张学良和其他四位与他有重大关系的人物进行设计再现，重现了种种年代往事。该项目不仅是对英雄的致敬，也是对历史的重温与追溯。 </div> <div id="desc_english">The project was inspired by Mr.Tianfang  Shan\'s long monologue about the lives of Zuolin Zhang and Xueliang Zhang . The author designed a recreation around Xueliang Zhang and four other characters with whom he had a significant relationship, recreating all kinds of past events of the era. The project is not only a tribute to the heroes, but also a revisiting and retracing of history.</div>'
+					addDesc(htmlStr)
+				} else if (param == 7) {
+					let htmlStr =
+						'<div id="title"><b>无刺电音节 No thorn electric music festival</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>客户/CLIENT: </b>网易放刺 FEVER</br><b>团队/TEAM:</b> 蒲润Pu Run、丁一珈Yijia Ding、李涵颖Hanying Li</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目以思考水果壳的“刺”与人心中的“刺”之间的关系展开。从思考快节奏时代下人们该如何重现伪装下纯粹的自己出发，在展示在有刺与无刺之间每个水果的情感的变化的同时，也希望观众思考是否自己也都有着像水果表面上刺一样尖锐的“保护壳”。项目旨在让观众看展的同时放松被禁锢的柔软内心，让赤裸而纯粹的自己重现。与我们一起来点儿快乐维生素。</div> <div id="desc_english">The project begins with a consideration of the relationship between the "thorns" of the fruit shells and the "thorns" of the human heart. It starts from thinking about how to recreate one\'s pure self under the disguise in the fast-paced era, and while showing the change of emotion of each fruit between thorny and non-thorny, it also hopes that the audience will think about whether they all have the same sharp "protective shell" as the thorns on the surface of the fruit. The aim of the project is to let the audience relax the softness of their confined hearts while watching the exhibition, and to let their naked and pure selves reappear. Join us for some happy vitamins.</div>'
+					addDesc(htmlStr)
+				} else if (param == 8) {
+					let htmlStr =
+						'<div id="title"><b>火花老年友好型在线社交平台 Spark senior-friendly online social platform</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run、孔嘉慧 Jiahui Kong、蒋林孜 Linzi Jiang、柯婧然Jingran Ke</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 随着时代的飞速发展，当前我国的老龄化比例越来越高，并且还有大量的空巢老人，Spark品牌致力干提供优质的老年友好型在线社交关系平台，为用户提供多样化、可靠和高质量的社交功能，增强用户与社会的情感连接，并将进一步为老年人打造在线社区，丰富他们的日常生活，希望用户在Spark点燃爱情的火花。</div> <div id="desc_english">With the rapid development of the times, the current proportion of aging in China is increasing and there are still a large number of empty nesters, Spark brand is committed to dry to provide a quality senior-friendly online social relationship platform, providing users with diverse, reliable and high-quality social features to enhance the emotional connection between users and society, and will further create an online community for the elderly to enrich their daily lives, hoping that users Ignite the spark of love at Spark.</div>'
+					addDesc(htmlStr)
 				}
-				if (n < 1) {
-					slideIndex = slides.length;
+				setTimeout(function () {
+					$("#detail>div").animate({
+						"margin-top": "0px",
+					}, 700, "linear");
+				}, 0)
+			} else {
+				window.location.reload()
+			}
+
+		}
+
+		function goPage() {
+
+			var cur = localStorage.getItem("param")
+			var next = parseInt(cur) + 1
+			if (next >= 9) {
+				next = 0;
+			}
+			console.log('当前', cur, 'next', next)
+			localStorage.setItem("param", next)
+			var randomParam = Math.random();
+			window.location.href = "../details/details.html?param=" + next + "&time=" + randomParam;
+
+		}
+
+		function addDesc(htmlStr) {
+			var container = document.getElementById('detail');
+			container.innerHTML = "<div><div>" + htmlStr + "</div></div>";
+		}
+		delOffset();
+
+		function delOffset() {
+			var index = 0;
+			$("#lun .mySlides").each(function (i, x) {
+				if ($(x)[0].style.display == "block") {
+					index = i;
 				}
+			});
 
-				// 隐藏所有幻灯片
-				for (var i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
-
-				// 显示当前幻灯片
-				console.log('取图片{}', slideIndex - 1)
-				slides[slideIndex - 1].style.display = "block";
-			}
-
-			function backPage() {
-				window.location.href = "../menu/menu.html";
-			}
-
-			function goDesc() {
-				// window.location.href = "../desc/desc.html?param="+param;
-				type = type == 0 ? 1 : 0;
-				if (type == 1) {
-					document.getElementById("detail").style.display = "flex";
-					document.getElementById("body").style.display = "none";
-					var style = document.createElement('style');
-					// style.innerHTML = "#main {background:url(../assets/img/icon/盘子.png);background-position: -504px -356px; }";
-
-					// 将样式规则添加到文档头部
-					// let htmlStr = '<div id="title"><b></b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 随着时代的飞速发展，当前我国的老龄化比例越</div> <div id="desc_english"></div>'
-					document.head.appendChild(style);
-					if (param == 0) {
-						let htmlStr =
-							'<div id="title"><b>关于我</b></div><div id="desc"><b>About me</b></br> 蒲润，又名苍耳。2001年出生于山东青岛。在校期间曾两次参与adidas Original品牌赋能计划。在设计创作中，她经常融合温暖细小的事物。喜欢相声和猫，听说人很逗。</div> <div id="desc_english">Pu Run，also known as Canger. She was born in Qingdao, Shandong Province in 2001. During her school years, she participated in the adidas Original Brand Empowerment Program twice. In her design creation, she often blends warm and small things. She enjoys comedy and cats,and I heard that she is very funny.</div>'
-						addDesc(htmlStr)
-					} else if (param == 1) {
-						let htmlStr =
-							'<div id="title"><b>苍耳历险记Adventures of Cang Er</b></div> <div id="info"> <b>年份/YEAR:</b> 2021</br> <b>客户/CLIENT:</b> 阿迪达斯三叶草adidas Originals</br> <b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 作者将卡通形象与adidas.三叶草元素相结合，设计了一款多人线下桌游一一苍耳历险记。游戏 适合2一8人，含有多款人物形象供玩家选择。游戏中，玩家通过掷骰子来交朋友，游戏结束时 朋友最多者茯胜。每一次的投掷具有偶然性和不确定性，也带给玩家在游戏中不同的历险经历。</div> <div id="desc_english">The author combines cartoon images with adidas clover elements to design a multiplayer offline board game Cale Adventures.The game is suitable for 2-8 players and contains a variety of characters for players to choose from.In the game,players make friends by rolling the dice,and the one with the most friends at the end of the game wins.Each roll has chance and uncertainty,which also brings players a different adventure in the game.</div>'
-						addDesc(htmlStr)
-					} else if (param == 2) {
-						let htmlStr =
-							'<div id="title"><b>No tag on me</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br> <b>客户/CLIENT:</b> 阿迪达斯三叶草adidas Originals</br> <b>团队/TEAM:</b> 蒲润Pu Run、郑宥安 Youan Zheng、龙宇祺Yuqi Long、蒋世贞Shizhen Jiang</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 该项目于2022年由阿迪达斯三叶草发起，并同年在阿迪达斯官方公众号进行展示以及上海门店线下展览。 短片讲述了五个被条框和标签束缚的女孩，在一个永不设限的三叶草女孩自信力量的感染下，接受自身不完美、找回自我的故事。这是一部关于运动与美的动画，也是girl power与自信的体现。作为一个全女生的创作团队，我们想告诉每个女孩：我们都独一无二且美好，不完美和差异，才让我们成为真正的自己。</div> <div id="desc_english">The project was initiated by adidas Originals in 2022 and was showcased on the official adidas Originals public website and exhibited offline in Shanghai stores. The short film tells the story of five girls bound by rules and labels, infected by the confident power of a clover girl who never sets limits, accepting their own imperfections and finding themselves. It is an animation about movement and beauty, and the embodiment of girl power and self-confidence. As an all-girl creative team, we want to tell every girl that we are all unique and beautiful, and that imperfections and differences are what make us who we really are.</div>'
-						addDesc(htmlStr)
-					} else if (param == 3) {
-						let htmlStr =
-							'<div id="title"><b>我第一诗书My first collection of poems</b></div> <div id="info"> <b>年份/YEAR:</b> 2023</br> <b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目名称“我第一诗书”是由正常语序“我的第一本诗集”经过聋人语序思维过后修改后得到的。这本以聋人视角阅读的诗集打乱了非听障人士的阅读顺序，从聋人的语序思维出发，打碎固定的文本排列，将词语重新组合。左右对照式的排版让阅读者阅读时可进行更加直观的对比。项目旨在让非听障人士从正常语序下解放出来的同时，能了解更多聋人群体的语言表达逻辑与思维方式。</div> <div id="desc_english"> The title of the project, "Me First Poems Book", was created from the normal language order of "My first collection of poems" and modified by the deaf language order thinking. This book of poems read from the perspective of a deaf person disrupts the reading order of a non-hearing person by breaking up the fixed arrangement of the text and regrouping words from a deaf person\'s linguistic order. The layout is left-right contrasted so that non-hearing readers can cross-reference left and right as they read. The project aims to free non-hearing people from the stereotyped and pale phrases in the normal language order, and at the same time to learn more about the logic of language expression and the way of thinking of the deaf community. </div>'
-						addDesc(htmlStr)
-					} else if (param == 4) {
-						let htmlStr =
-							'<div id="title"><b>数字漫游 Digital Wandering</b></div> <div id="info"> <b>年份/YEAR:</b> 2023</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 人们面对每天源源不断的数字推送时，大脑偶尔会出现“死机”“卡顿”的状况。当大脑放空时，我们似乎在经历一场数字漫游。这场漫游不受地域、时间和身份的限制，通过互联网和数字媒体进行虚拟的旅行和探索，让人们在信息轰炸下的节奏中得到暂时的休憩。项目呈现了人们在浏览不同互联网数字讯息时所经历的心理和情感状态，以及对此现象的思考和探索。</div> <div id="desc_english">The author combines suitable for 2-8 players and contains a variety of characters for players to choose from.In the game,players make friends by rolling the dice,and the one with the most friends at the end of the game wins.Each roll has chance and uncertainty,which also brings players a different adventure in the game.</div>'
-						addDesc(htmlStr)
-					} else if (param == 5) {
-						let htmlStr =
-							'<div id="title"><b>我能阻断光吗？Perhaps,can I block the light?</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 在作品中，作者使用多种材料试图切断光的延续，但都无法彻底阻断。通过这种“无聊”的记叙方式来讨论当下人们面对的各种外界因素影响与正在做的事之间的关系，以及自我与外界因素之间的平衡的重新思考</div> <div id="desc_english">In the work, the author uses various materials to try to cut off the continuity of light, but none of them can be completely blocked. Through this "boring" narrative, the author discusses the relationship between the various external influences and what people are doing, and the rethinking of the balance between the self and the external factors.</div>'
-						addDesc(htmlStr)
-					} else if (param == 6) {
-						let htmlStr =
-							'<div id="title"><b>张学良系列 Zhang Xueliang Serie</b></div> <div id="info"> <b>年份/YEAR:</b> 2021</br><b>团队/TEAM:</b> 蒲润Pu Run</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目的灵感来源是单田芳先生关于张作霖和张学良生平的长篇单口相声，作者围绕张学良和其他四位与他有重大关系的人物进行设计再现，重现了种种年代往事。该项目不仅是对英雄的致敬，也是对历史的重温与追溯。 </div> <div id="desc_english">The project was inspired by Mr.Tianfang  Shan\'s long monologue about the lives of Zuolin Zhang and Xueliang Zhang . The author designed a recreation around Xueliang Zhang and four other characters with whom he had a significant relationship, recreating all kinds of past events of the era. The project is not only a tribute to the heroes, but also a revisiting and retracing of history.</div>'
-						addDesc(htmlStr)
-					} else if (param == 7) {
-						let htmlStr =
-							'<div id="title"><b>无刺电音节 No thorn electric music festival</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>客户/CLIENT: </b>网易放刺 FEVER</br><b>团队/TEAM:</b> 蒲润Pu Run、丁一珈Yijia Ding、李涵颖Hanying Li</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 项目以思考水果壳的“刺”与人心中的“刺”之间的关系展开。从思考快节奏时代下人们该如何重现伪装下纯粹的自己出发，在展示在有刺与无刺之间每个水果的情感的变化的同时，也希望观众思考是否自己也都有着像水果表面上刺一样尖锐的“保护壳”。项目旨在让观众看展的同时放松被禁锢的柔软内心，让赤裸而纯粹的自己重现。与我们一起来点儿快乐维生素。</div> <div id="desc_english">The project begins with a consideration of the relationship between the "thorns" of the fruit shells and the "thorns" of the human heart. It starts from thinking about how to recreate one\'s pure self under the disguise in the fast-paced era, and while showing the change of emotion of each fruit between thorny and non-thorny, it also hopes that the audience will think about whether they all have the same sharp "protective shell" as the thorns on the surface of the fruit. The aim of the project is to let the audience relax the softness of their confined hearts while watching the exhibition, and to let their naked and pure selves reappear. Join us for some happy vitamins.</div>'
-						addDesc(htmlStr)
-					} else if (param == 8) {
-						let htmlStr =
-							'<div id="title"><b>火花老年友好型在线社交平台 Spark senior-friendly online social platform</b></div> <div id="info"> <b>年份/YEAR:</b> 2022</br><b>团队/TEAM:</b> 蒲润Pu Run、孔嘉慧 Jiahui Kong、蒋林孜 Linzi Jiang、柯婧然Jingran Ke</br> </div> <div id="desc"><b>项目简介/PROJECT PROFILE:</b></br> 随着时代的飞速发展，当前我国的老龄化比例越来越高，并且还有大量的空巢老人，Spark品牌致力干提供优质的老年友好型在线社交关系平台，为用户提供多样化、可靠和高质量的社交功能，增强用户与社会的情感连接，并将进一步为老年人打造在线社区，丰富他们的日常生活，希望用户在Spark点燃爱情的火花。</div> <div id="desc_english">With the rapid development of the times, the current proportion of aging in China is increasing and there are still a large number of empty nesters, Spark brand is committed to dry to provide a quality senior-friendly online social relationship platform, providing users with diverse, reliable and high-quality social features to enhance the emotional connection between users and society, and will further create an online community for the elderly to enrich their daily lives, hoping that users Ignite the spark of love at Spark.</div>'
-						addDesc(htmlStr)
-					}
-					setTimeout(function() {
-						$("#detail>div").animate({
-							"margin-top": "0px",
-						}, 700, "linear");
-					}, 0)
-				} else {
-					window.location.reload()
-				}
-
-			}
-
-			function goPage() {
-
-				var cur = localStorage.getItem("param")
-				var next = parseInt(cur) + 1
-				if (next >= 9) {
-					next = 0;
-				}
-				console.log('当前', cur, 'next', next)
-				localStorage.setItem("param", next)
-				var randomParam = Math.random();
-				window.location.href = "../details/details.html?param=" + next + "&time=" + randomParam;
-
-			}
-
-			function addDesc(htmlStr) {
-				var container = document.getElementById('detail');
-				container.innerHTML = "<div><div>" + htmlStr + "</div></div>";
-			}
-			delOffset();
-
-			function delOffset() {
-				var index = 0;
-				$("#lun .mySlides").each(function(i, x) {
-					if ($(x)[0].style.display == "block") {
-						index = i;
-					}
-				});
-
-				$(".prev").css({
-					"left": ($("#lun .mySlides:eq(" + index + ")")[0].offsetLeft - 130) + "px"
-				})
-				$(".next").css({
-					"left": ($("#lun .mySlides:eq(" + index + ")").width() + $("#lun .mySlides:eq(" + index + ")")[0].offsetLeft -
-						20) + "px"
-				})
-			}
-			$(window).resize(function() {
-				delOffset();
+			$(".prev").css({
+				"left": ($("#lun .mySlides:eq(" + index + ")")[0].offsetLeft - 130) + "px"
 			})
-		</script>
-	</body>
+			$(".next").css({
+				"left": ($("#lun .mySlides:eq(" + index + ")").width() + $("#lun .mySlides:eq(" + index + ")")[0].offsetLeft -
+					20) + "px"
+			})
+		}
+		$(window).resize(function () {
+			delOffset();
+		})
+	</script>
+</body>
 
 </html>
