@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="../../layui/css/layui.css" />
+	<!-- <link href="/cdn.staticfile.org/layui/2.8.0/css/layui.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="./style.css">
 	<script src="../../jquery-1.7.2.js"></script>
 </head>
@@ -13,8 +14,8 @@
 	<div class="smoke"></div>
 	<div id="main" style="overflow: auto;">
 		<div id="title">
-			<div id="maintitle">苍耳作品精选，可放心食用</div>
-			<div id="subtitle">Cang Er's works selected, can be assured of practical</div>
+			<div id="maintitle">欢迎来到苍耳的网站</div>
+			<div id="subtitle">Welcome to Cang Er's webside</div>
 		</div>
 		<div id="menu" class="layui-row">
 			<div id="left" class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg5">
@@ -26,7 +27,7 @@
 								<div>关于我</div>
 								<div>About me</div>
 							</div>
-							<div class="box">
+							<div class="box 0" id="0">
 								<span>2001</span>
 								<input type="checkbox" onclick="goPage(0)">
 							</div>
@@ -44,7 +45,7 @@
 								</div>
 								<div class="min_size">出版物</br>Publication</div>
 							</div>
-							<div class="box">
+							<div class="box 3" id="3">
 								<span>2023</span>
 								<input type="checkbox" onclick="goPage(3)">
 							</div>
@@ -59,7 +60,7 @@
 								</div>
 								<div class="min_size">视觉设计、网站设计</br>website design</div>
 							</div>
-							<div class="box">
+							<div class="box 4" id="4">
 								<span>2022</span>
 								<input type="checkbox" onclick="goPage(4)">
 							</div>
@@ -75,7 +76,7 @@
 								</div>
 								<div class="min_size">视频</br>Video</div>
 							</div>
-							<div class="box">
+							<div class="box 5" id="5">
 								<span>2021</span>
 								<input type="checkbox" onclick="goPage(5)">
 							</div>
@@ -90,7 +91,7 @@
 								</div>
 								<div class="min_size">海报设计、视觉设计</br>Poster design, visual design</div>
 							</div>
-							<div class="box">
+							<div class="box 6" id="6">
 								<span>2021</span>
 								<input type="checkbox" onclick="goPage(6)">
 							</div>
@@ -110,7 +111,7 @@
 								</div>
 								<div class="min_size">品牌设计、插画</br>Brand design,illustration</div>
 							</div>
-							<div class="box">
+							<div class="box 1" id="1">
 								<span>2021</span>
 								<input type="checkbox" onclick="goPage(1)">
 							</div>
@@ -124,7 +125,7 @@
 								</div>
 								<div class="min_size">平面图形动画</br>Motion Graphic Animated</div>
 							</div>
-							<div class="box">
+							<div class="box 2" id="2">
 								<span>2022</span>
 								<input type="checkbox" onclick="goPage(2)">
 							</div>
@@ -142,7 +143,7 @@
 								</div>
 								<div class="min_size">品牌设计</br>Brand design</div>
 							</div>
-							<div class="box">
+							<div class="box 7" id="7">
 								<span>2021</span>
 								<input type="checkbox" onclick="goPage(7)">
 							</div>
@@ -157,9 +158,10 @@
 								</div>
 								<div class="min_size">交互设计、品牌设计</br>Interaction design, brand design</div>
 							</div>
-							<div class="box">
+							<div class="box 8" id="8">
 								<span>2022</span>
 								<input type="checkbox" onclick="goPage(8)">
+
 							</div>
 						</div>
 					</div>
@@ -179,6 +181,10 @@
 			</div>
 		</div>
 	</div>
+	<script src="../../layui/layui.js"></script>
+	<script>
+
+	</script>
 	<script>
 		document.addEventListener('mousemove', function (event) {
 			var smoke = document.querySelector('.smoke');
@@ -193,9 +199,19 @@
 			}, 3000);
 		});
 		function goPage(param) {
-			localStorage.setItem('param', param)
-			window.location.href = "../details/details.html?param=" + param;
+			var box = document.getElementById(param);
+			// console.log(box[param]);
+			console.log(box);
+			console.log(param);
+			var icon = '<i class="layui-icon layui-icon-ok" style="font-size: 30px; color: red;position: absolute;left: 38px;top: -5px;"></i>';
+			box.innerHTML += icon;
+			setTimeout(function () {
+				localStorage.setItem('param', param)
+				window.location.href = "../details/details.html?param=" + param;
+			}, 300)
 		}
+		window.addEventListener()
+
 	</script>
 </body>
 <script>

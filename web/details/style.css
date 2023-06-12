@@ -71,7 +71,7 @@ body {
 	height: 78%;
 	/* background: url(../assets/img/icon/盘子.png); */
 	overflow: hidden;
-	background-repeat: repeat !important;
+	/* background-repeat: repeat !important; */
 	background-size: cover;
 	background-attachment: fixed;
 	width: 100%;
@@ -80,25 +80,37 @@ body {
 	top: 0;
 	left: 0;
 	right: 0;
+	background-color:transparent;
+	background-color: rgb(0 0 0 / 80%);;
+	/* opacity: 0.9; */
+	z-index: 100000;
+	display: none;
 }
 
 #detail>div {
-	width: 100%;
-	background: url(../assets/img/icon/盘子.png);
-	height: 100%;
-	max-width: 1400px;
-	background-size: cover;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-position-y: -60px;
-	background-repeat: no-repeat;
-	margin-top: 1300px;
+	/* width: 100%; */
+    /* background: url(../assets/img/icon/盘子.png); */
+    /* background: url(../2.png); */
+    background-size: 40%;
+    height: 100%;
+    width: 40%;
+    /* max-width: 1400px; */
+    background-size: cover;
+    display: flex;
+	align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 320px;
+    background-position-y: 690px;
+    background-repeat: no-repeat;
+    margin-top: 1300px;
 }
 
 #detail>div>div {
-	width: 60%;
+	width: 45%;
+	/* height: 70%; */
+	background-color: #eedcc7;
 	text-align: left;
+	padding: 30px 50px 70px 50px;
 }
 
 #head {
@@ -118,10 +130,31 @@ body {
 #tail .option {
 	border-top: 1px black solid;
 	padding-top: 2px;
+	width: 18%;
 }
 
 .slideshow-container_me {
 	justify-content: flex-start !important;
+}
+
+.fixImg{
+	position: fixed;
+    bottom: -975px;
+}
+.fixImg img{
+	width: 100%;
+	height: 100%;
+}
+.fixImg1{
+	width: 45%;
+    height: 35%;
+    position: fixed;
+    bottom: -165px;
+    left: 95px;
+}
+.fixImg1 img{
+	width: 100%;
+	height: 100%;
 }
 
 #body {
@@ -223,17 +256,22 @@ iframe.mySlides{
 
 #title {
 	font-size: 30px;
-	padding: 30px 50px 0 50px;
+	/* padding: 30px 50px 0 50px; */
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px dashed;
+	text-align: center;
+	line-height: 30px;
 }
 
 #info {
-	padding: 10px 50px 10px 50px;
+	/* padding: 10px 50px 10px 50px; */
 }
 
-#desc,
 #desc_english {
 	/* font-size: 20px; */
-	padding: 0 50px 0 50px;
+	/* padding: 0 50px 0 50px; */
+	margin-top: 10px;
 }
 
 @media screen and (max-width: 960px) {
